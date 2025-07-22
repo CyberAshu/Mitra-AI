@@ -1,0 +1,90 @@
+{
+  "name": "mitra-ai-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "main": "public/electron.js",
+  "homepage": "./",
+  "dependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@tsparticles/react": "^3.0.0",
+    "autoprefixer": "^10.4.21",
+    "axios": "^1.10.0",
+    "electron-is-dev": "^3.0.1",
+    "postcss": "^8.5.6",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-scripts": "5.0.1",
+    "react-sparklines": "^1.7.0",
+    "socket.io-client": "^4.8.1",
+    "systeminformation": "^5.27.7",
+    "tsparticles-slim": "^2.12.0",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts --max_old_space_size=2048 start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron": "electron . --no-sandbox",
+    "electron-dev": "concurrently \"cross-env BROWSER=none NODE_OPTIONS=--max_old_space_size=2048 npm start\" \"wait-on http://localhost:3000 && electron . --no-sandbox --disable-dev-shm-usage\"",
+    "electron-dev-light": "NODE_OPTIONS=--max_old_space_size=1024 electron . --no-sandbox --disable-dev-shm-usage",
+    "start-light": "cross-env GENERATE_SOURCEMAP=false BROWSER=none NODE_OPTIONS=--max_old_space_size=1024 react-scripts start",
+    "electron-pack": "npm run build && electron-builder",
+    "dist": "npm run build && electron-builder --publish=never"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "cross-env": "^7.0.3",
+    "electron": "^37.2.3",
+    "electron-builder": "^26.0.12",
+    "tailwindcss": "^3.4.17",
+    "wait-on": "^8.0.3"
+  },
+  "build": {
+    "appId": "com.mitraai.dashboard",
+    "productName": "MITRA AI Dashboard",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "public/electron.js",
+      "public/preload.js",
+      "public/icon.png"
+    ],
+    "mac": {
+      "icon": "public/icon.png",
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "icon": "public/icon.png",
+      "target": "nsis"
+    },
+    "linux": {
+      "icon": "public/icon.png",
+      "category": "Utility"
+    }
+  }
+}
